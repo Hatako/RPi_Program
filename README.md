@@ -1,5 +1,5 @@
-# RPi_program
-Raspberry Piで作成したロボット用のプログラムを保存するレポジトリ(since 7/22, M2)
+# RPi_research
+Raspberry Piで作成した研究ロボット用のプログラムを保存するレポジトリ(since 7/22, M2)
 
 
 # To do
