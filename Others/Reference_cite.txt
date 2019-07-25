@@ -1,0 +1,24 @@
+##2018
+### 6/22
+[Voice recognition with RPi]
+https://qiita.com/fishkiller/items/dfd1b13a4380c6aa6322
+
+[Error about julius]
+http://poosyche.hatenablog.com/entry/2015/07/28/225843
+
+
+### 6/23
+[LED manipuration with voice recognition]
+https://ueqareer.net/2463
+
+[Aques talk Pi with RPi]
+http://uepon.hatenadiary.com/entry/2017/08/12/162712
+
+### 7/2
+[Docomo talking API]
+https://qiita.com/ponkio-o/items/df0d64677dcb4b7e8eb3
+
+### 7/16
+https://blogs.yahoo.co.jp/mikewanko2/14286782.html
+https://iot-plus.net/make/raspi/rpi3-julius-speech-recognition/
+http://make.bcde.jp/raspberry-pi/ファイヤーウォールの設定
