@@ -9,3 +9,4 @@ Raspberry Piで作成した研究ロボット用のプログラムを保存す�
 
 # Did
 7/24 RPi2号機にRPi_researchディレクトリを作成しgit init, pullを行った
+7/25 RPi1号機にRPi_researchディレクトリを作成しpushテストを行った
