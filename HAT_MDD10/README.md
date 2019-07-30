@@ -18,3 +18,7 @@ This is sample code for Cytron Hat-MDD10.
 * Raspberry pi 3
 
 Welcome to our [technical forum](http://forum.cytron.com.my/) for further inquiry.
+
+
+# Did
+7/30 testディレクトリにtkinter_test.pyを作成(tkinterの復習のため)
