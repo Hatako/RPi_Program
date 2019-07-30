@@ -9,7 +9,6 @@ root.geometry("500x1000")
 
 def check(event):
     text = ""
-    count = 0
     if Val1.get() == True:
         text+="項目1はチェックされとるで\n"
     else:
@@ -20,11 +19,13 @@ def check(event):
     else:
         text+="項目2はチェックされとらんで\n"
     messagebox.showinfo("確認した結果", text)
+    Val1.set(False)
+    Val2.set(False)
 
 
-#Button = tk.Button(text="チェックを確認したろか？", width=20)
-#Button.bind("<Button-1>", check)
-#Button.place(x=100, y=200)
+Button = tk.Button(text="チェックを確認したろか？", width=20)
+Button.bind("<Button-1>", check)
+Button.place(x=100, y=200)
 
 Val1 = tk.BooleanVar()
 Val2 = tk.BooleanVar()
