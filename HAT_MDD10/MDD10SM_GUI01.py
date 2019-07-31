@@ -3,6 +3,9 @@
 具体的には前進, 後退, 左回転, 右回転, 停止のボタンを配置
 また, 上部にスライドバーを配置し進んだり回転する速度を変化できるようにする
 停止ボタンが押された際はスライドバーを0の位置に戻すことを忘れないように
+
+
+7/31 GUIのプログラムは完成したが, スマホ等で操作することを考えるとまだまだ操作性が悪いので改良する
 """
 
 import RPi.GPIO as GPIO		
@@ -28,6 +31,7 @@ GPIO.setup(DIG2, GPIO.OUT)		# set pin as output
 GPIO.setup(DIG1, GPIO.OUT)		# set pin as output
 p1 = GPIO.PWM(AN1, 100)			# set pwm for M1
 p2 = GPIO.PWM(AN2, 100)			# set pwm for M2
+STATE = "停止"
 
 print("please wait")
 sleep(0.1)				# delay for 1 seconds
@@ -35,70 +39,105 @@ print("go")
 p1.start(0)
 p2.start(0)
 
+# DoubleVarの値に応じてDuty比を変化させる
 def State(event):
-    speed = int(var.get())
-    p1.start(speed)
-    p2.start(speed)
-    selection = "speed:{}".format(speed)
-    label1.config(text=selection)
+    if STATE=="停止":
+        value.set(0)
+        label1.config(text="停止状態なので動かせません")
+    else:
+        speed = int(var.get())
+        p1.start(speed)
+        p2.start(speed)
+        selection = "speed:{}".format(speed)
+        label1.config(text=selection)
 
 def Forward_Reset(event):
-    speed = int(var.get())
-    for i in range(speed):
-        speed-=1
-        p1.start(speed)
-        p2.start(speed)
-        sleep(0.02)
-    value.set(0)
-    GPIO.output(DIG1, GPIO.HIGH)
-    GPIO.output(DIG2, GPIO.HIGH)
-    label2.config(text="前進")
+    label1.config(text="")
+    if STATE=="前進":
+        pass
+    else:
+        global STATE
+        STATE="前進"
+        speed = int(var.get())
+        for i in range(speed):
+            speed-=1
+            p1.start(speed)
+            p2.start(speed)
+            sleep(0.02)
+        value.set(0)
+        GPIO.output(DIG1, GPIO.HIGH)
+        GPIO.output(DIG2, GPIO.HIGH)
+        label2.config(text=STATE)
 
 def Left_Reset(event):
-    speed = int(var.get())
-    for i in range(speed):
-        speed-=1
-        p1.start(speed)
-        p2.start(speed)
-        sleep(0.02)
-    value.set(0)
-    GPIO.output(DIG1, GPIO.HIGH)
-    GPIO.output(DIG2, GPIO.LOW)
-    label2.config(text="左回転")
+    label1.config(text="")
+    if STATE=="左回転":
+        pass
+    else:
+        global STATE
+        STATE="左回転"
+        speed = int(var.get())
+        for i in range(speed):
+            speed-=1
+            p1.start(speed)
+            p2.start(speed)
+            sleep(0.02)
+        value.set(0)
+        GPIO.output(DIG1, GPIO.HIGH)
+        GPIO.output(DIG2, GPIO.LOW)
+        label2.config(text=STATE)
 
 def Back_Reset(event):
-    speed = int(var.get())
-    for i in range(speed):
-        speed-=1
-        p1.start(speed)
-        p2.start(speed)
-        sleep(0.02)
-    value.set(0)
-    GPIO.output(DIG1, GPIO.LOW)
-    GPIO.output(DIG2, GPIO.LOW)
-    label2.config(text="後進")
+    label1.config(text="")
+    if STATE=="後進":
+        pass
+    else:
+        global STATE
+        STATE="後進"
+        speed = int(var.get())
+        for i in range(speed):
+            speed-=1
+            p1.start(speed)
+            p2.start(speed)
+            sleep(0.02)
+        value.set(0)
+        GPIO.output(DIG1, GPIO.LOW)
+        GPIO.output(DIG2, GPIO.LOW)
+        label2.config(text=STATE)
 
 def Right_Reset(event):
-    speed = int(var.get())
-    for i in range(speed):
-        speed-=1
-        p1.start(speed)
-        p2.start(speed)
-        sleep(0.02)
-    value.set(0)
-    GPIO.output(DIG1, GPIO.LOW)
-    GPIO.output(DIG2, GPIO.HIGH)
-    label2.config(text="右回転")
+    label1.config(text="")
+    if STATE=="右回転":
+        pass
+    else:
+        global STATE
+        STATE="右回転"
+        speed = int(var.get())
+        for i in range(speed):
+            speed-=1
+            p1.start(speed)
+            p2.start(speed)
+            sleep(0.02)
+        value.set(0)
+        GPIO.output(DIG1, GPIO.LOW)
+        GPIO.output(DIG2, GPIO.HIGH)
+        label2.config(text=STATE)
 
 def Stop_Reset(event):
-    speed = int(var.get())
-    for i in range(speed):
-        speed-=1
-        p1.start(speed)
-        p2.start(speed)
-        sleep(0.02)
-    value.set(0)
-    label2.config(text="停止")
+    label1.config(text="")
+    if STATE=="停止":
+        pass
+    else:
+        global STATE
+        STATE="停止"
+        speed = int(var.get())
+        for i in range(speed):
+            speed-=1
+            p1.start(speed)
+            p2.start(speed)
+            sleep(0.02)
+        value.set(0)
+        label2.config(text=STATE)
 
 
 
@@ -139,9 +178,3 @@ label2 = tk.Label(root)
 label2.config(text="停止")
 label2.place(x=300, y=400)
 root.mainloop()
-
-
-#except:					# exit programe when keyboard interupt
-#   p1.start(0)				# set speed to 0
-#   p2.start(0)				# set speed to 0
-#					# Control+x to save file and exit

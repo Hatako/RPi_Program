@@ -7,6 +7,7 @@ root =tk.Tk()
 root.title("移動ロボットを動かそう！")
 root.geometry("500x1000")
 
+"""
 def check(event):
     text = ""
     if Val1.get() == True:
@@ -55,9 +56,18 @@ button.place(x=100, y=800)
 
 label = tk.Label(root)
 label.place(x=100, y=900)
+"""
 
+def Test(event):
+    value = var.get()
+    print(value)
+    label.config(text=value)
 
+var = tk.DoubleVar()
+scale = tk.Scale(root, variable=var, command=Test)
+scale.place(x=100, y=100)
 
-
+label = tk.Label(root)
+label.place(x=100, y=150)
 
 root.mainloop()
