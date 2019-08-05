@@ -4,9 +4,9 @@
 #DSサーボが故障したのでMG996Rをとりあえず一番下で動作させています
 
 
-from Adafruit_PWM_Servo_Driver import PWM
+from Adafruit.Adafruit_PWM_Servo_Driver import PWM
 import time
-import Tkinter 
+import Tkinter
 
 #Tkオブジェクトのインスタンス作成
 root=Tkinter.Tk()
