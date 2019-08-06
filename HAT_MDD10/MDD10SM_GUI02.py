@@ -1,8 +1,9 @@
 """
 7/31 研究ノートP.13に書いた図のようにスライドバーを配置し,
      移動ロボットを操作することができるようにする
+     左右0, 停止ボタンを作成
 
-     直進, 回転, 停止ボタンを作成
+8/6 タブレット操作しやすくするためにスライダーの大きさ調整
 """
 
 import tkinter as tk
@@ -11,7 +12,7 @@ from time import sleep
 
 root = tk.Tk()
 root.title("移動ロボットを動かそう!")
-root.geometry("600x400")
+root.geometry("1000x1000")
 
 
 # HAT MDD10の設定
@@ -101,22 +102,22 @@ def Stop(event):
 
 
 var1 = tk.DoubleVar()
-value1 = tk.Scale(root, label='前後', length=300, tickinterval=10, orient='v', from_=50, to=-50, variable=var1, command=State)
+value1 = tk.Scale(root, label='前後', width=100, length=600, tickinterval=10, orient='v', from_=50, to=-50, variable=var1, command=State)
 value1.set(0)
-value1.place(x=400, y=50)
+value1.place(x=800, y=50)
 
 var2 = tk.DoubleVar()
-value2 = tk.Scale(root, label='左右', length=300, tickinterval=10, orient='h', from_=-50, to=50, variable=var2, command=State)
+value2 = tk.Scale(root, label='左右', width=100, length=600, tickinterval=10, orient='h', from_=-50, to=50, variable=var2, command=State)
 value2.set(0)
 value2.place(x=50, y=150)
 
 Button_horizontal0 = tk.Button(text="左右0にセット", width=10, height=4)
 Button_horizontal0.bind("<Button-1>", Horizon0)
-Button_horizontal0.place(x=100, y=250)
+Button_horizontal0.place(x=100, y=800)
 
 Button_stop = tk.Button(text="停止", width=10, height=4)
 Button_stop.bind("<Button-1>", Stop)
-Button_stop.place(x=200, y=250)
+Button_stop.place(x=200, y=800)
 
 
 root.mainloop()
