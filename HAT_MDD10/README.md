@@ -22,3 +22,4 @@ Welcome to our [technical forum](http://forum.cytron.com.my/) for further inquir
 
 # Did
 7/30 testディレクトリにtkinter_test.pyを作成(tkinterの復習のため)
+8/7 2号機テスト
