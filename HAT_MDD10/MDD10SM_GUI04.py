@@ -183,13 +183,13 @@ Button_Stop = tk.Button(text="○", font=("", FONT_SIZE))
 Button_Stop.bind("<Button-1>", stop)
 Button_Stop.place(x=STOP_BUTTON_X, y=STOP_BUTTON_Y)
 
-Button_Get = tk.Button(text="持ち上げる", font=("", 60))
+Button_Get = tk.Button(text="拾う", font=("", 60))
 Button_Get.bind("<Button-1>", get)
-Button_Get.place(x=100, y=600)
+Button_Get.place(x=600, y=600)
 
-Button_Pass = tk.Button(text="渡す", font=("", 60))
+Button_Pass = tk.Button(text="受け取る", font=("", 60))
 Button_Pass.bind("<Button-1>", pass_object)
-Button_Pass.place(x=100, y=800)
+Button_Pass.place(x=600, y=800)
 
 
 #var = tk.DoubleVar()
