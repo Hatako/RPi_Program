@@ -1,6 +1,7 @@
 """
 8/6 ロボットアームの各サーボモータを動かすスライダーを追加する(Servo0~Servo3)
 8/7 物体を拾うボタンと持ち上げるボタンを作成する-->完
+8/8 持ち上げボタンは削除しアップグレードして04に継承
 """
 
 from Adafruit_PCA9685 import PCA9685
@@ -46,29 +47,6 @@ def control_servo3(event):
 	pwm.set_pwm(4, 0, servo3_pwmvalue_now)
 	print('サーボ3の角度: {}'.format(servo3_pwmvalue_now))
 
-def get(event):
-    pwm.set_pwm(0, 0, 448)
-    pwm.set_pwm(1, 0, 340)
-    pwm.set_pwm(2, 0, 383)
-    pwm.set_pwm(4, 0, 200)
-    servo0_pwmvalue.set(448)
-    servo1_pwmvalue.set(340)
-    servo2_pwmvalue.set(383)
-    servo3_pwmvalue.set(200)
-
-
-
-def lift(event):
-    pwm.set_pwm(0, 0, 448)
-    pwm.set_pwm(1, 0, 340)
-    pwm.set_pwm(2, 0, 383)
-    pwm.set_pwm(4, 0, 200)
-    servo0_pwmvalue.set(448)
-    servo1_pwmvalue.set(340)
-    servo2_pwmvalue.set(383)
-    servo3_pwmvalue.set(200)
-
-
 servo0 = tk.Scale(root, label='サーボモータ0', length=1900, tickinterval=10, orient='h', from_=395, to=560, variable=servo0_pwmvalue, command=control_servo0)
 servo1 = tk.Scale(root, label='サーボモータ1', length=1900, tickinterval=10, orient='h', from_=340, to=560, variable=servo1_pwmvalue, command=control_servo1)
 servo2 = tk.Scale(root, label='サーボモータ2', length=1900, tickinterval=10, orient='h', from_=240, to=415, variable=servo2_pwmvalue, command=control_servo2)
@@ -79,12 +57,5 @@ servo1.pack()
 servo2.pack()
 servo3.pack()
 
-Button_get = tk.Button(text="拾う", width=10, height=4)
-Button_get.bind("<Button-1>", get)
-Button_get.pack()
-
-Button_lift = tk.Button(text="持ち上げる", width=10, height=4)
-Button_lift.bind("<Button-1>", lift)
-Button_lift.pack()
 
 root.mainloop()
