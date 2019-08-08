@@ -159,39 +159,37 @@ def pass_object(event):
 
 
 #----------------------------------------------
-STOP_BUTTON_X=1200
+STOP_BUTTON_X=1300
 STOP_BUTTON_Y=350
+FONT_SIZE = 120
 
-BUTTON_HEIGTH = 15
-BUTTON_WIDTH = 30
-
-Button_Forward = tk.Button(text="前", height=BUTTON_HEIGTH, width=BUTTON_WIDTH)
+Button_Forward = tk.Button(text="↑", font=("", FONT_SIZE))
 Button_Forward.bind("<Button-1>", forward)
-Button_Forward.place(x=STOP_BUTTON_X, y=STOP_BUTTON_Y-300)
+Button_Forward.place(x=STOP_BUTTON_X, y=STOP_BUTTON_Y-250)
 
-Button_Back = tk.Button(text="後", height=BUTTON_HEIGTH, width=BUTTON_WIDTH)
+Button_Back = tk.Button(text="↓", font=("", FONT_SIZE))
 Button_Back.bind("<Button-1>", back)
-Button_Back.place(x=STOP_BUTTON_X, y=STOP_BUTTON_Y+300)
+Button_Back.place(x=STOP_BUTTON_X, y=STOP_BUTTON_Y+250)
 
-Button_Right = tk.Button(text="右", height=BUTTON_HEIGTH, width=BUTTON_WIDTH)
+Button_Right = tk.Button(text="→", font=("", FONT_SIZE))
 Button_Right.bind("<Button-1>", right)
-Button_Right.place(x=STOP_BUTTON_X+300, y=STOP_BUTTON_Y)
+Button_Right.place(x=STOP_BUTTON_X+250, y=STOP_BUTTON_Y)
 
-Button_Left = tk.Button(text="左", height=BUTTON_HEIGTH, width=BUTTON_WIDTH)
+Button_Left = tk.Button(text="←", font=("", FONT_SIZE))
 Button_Left.bind("<Button-1>", left)
-Button_Left.place(x=STOP_BUTTON_X-300, y=STOP_BUTTON_Y)
+Button_Left.place(x=STOP_BUTTON_X-250, y=STOP_BUTTON_Y)
 
-Button_Stop = tk.Button(text="停", height=BUTTON_HEIGTH, width=BUTTON_WIDTH)
+Button_Stop = tk.Button(text="○", font=("", FONT_SIZE))
 Button_Stop.bind("<Button-1>", stop)
 Button_Stop.place(x=STOP_BUTTON_X, y=STOP_BUTTON_Y)
 
-Button_Get = tk.Button(text="持ち上げる", height=BUTTON_HEIGTH, width=BUTTON_WIDTH)
+Button_Get = tk.Button(text="持ち上げる", font=("", 60))
 Button_Get.bind("<Button-1>", get)
-Button_Get.place(x=100, y=350)
+Button_Get.place(x=100, y=600)
 
-Button_Pass = tk.Button(text="渡す", height=BUTTON_HEIGTH, width=BUTTON_WIDTH)
+Button_Pass = tk.Button(text="渡す", font=("", 60))
 Button_Pass.bind("<Button-1>", pass_object)
-Button_Pass.place(x=400, y=350)
+Button_Pass.place(x=100, y=800)
 
 
 #var = tk.DoubleVar()
