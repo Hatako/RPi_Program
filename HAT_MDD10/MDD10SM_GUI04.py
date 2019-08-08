@@ -7,7 +7,7 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("移動ロボットを動かそう!")
-root.geometry("1600x1000")
+root.geometry("1920x1080")
 
 # HAT MDD10の設定
 GPIO.setmode(GPIO.BCM)			
@@ -22,7 +22,7 @@ GPIO.setup(AN2, GPIO.OUT)		# set pin as output
 GPIO.setup(DIG1, GPIO.OUT)		# set pin as output
 GPIO.setup(DIG2, GPIO.OUT)		# set pin as output
 
-right_wheel = GPIO.PWM(AN1, 100)			# set pwm for M1
+right_wheel = GPIO.PWM(AN1, 100)		# set pwm for M1
 left_wheel = GPIO.PWM(AN2, 100)			# set pwm for M2
 SPEED_RIGHT = 0
 SPEED_LEFT = 0
@@ -33,9 +33,8 @@ left_wheel.start(SPEED_LEFT)
 
 def forward(event):
     global SPEED_RIGHT, SPEED_LEFT
-    print(SPEED_RIGHT, SPEED_LEFT)
     if (SPEED_RIGHT + 10 or SPEED_LEFT + 10) > 50:
-        label1.config(text="左: {0}  右: {1}    操作できません".format(SPEED_LEFT, SPEED_RIGHT))
+        label1.config(text="左: {0}  右: {1}  操作不可".format(SPEED_LEFT, SPEED_RIGHT))
     else:
         SPEED_RIGHT = SPEED_RIGHT + 10
         SPEED_LEFT = SPEED_LEFT + 10
@@ -47,13 +46,14 @@ def forward(event):
             GPIO.output(DIG2, GPIO.HIGH)
         else:
             GPIO.output(DIG2, GPIO.LOW)
+        right_wheel.start(abs(SPEED_RIGHT))
+        left_wheel.start(abs(SPEED_LEFT))
         label1.config(text="左: {0}  右: {1}".format(SPEED_LEFT, SPEED_RIGHT))
 
 def back(event):
     global SPEED_RIGHT, SPEED_LEFT
-    print(SPEED_RIGHT, SPEED_LEFT)
     if (SPEED_RIGHT - 10 or SPEED_LEFT - 10) < -50:
-        label1.config(text="左: {0}  右: {1}    操作できません".format(SPEED_LEFT, SPEED_RIGHT))
+        label1.config(text="左: {0}  右: {1}  操作不可".format(SPEED_LEFT, SPEED_RIGHT))
     else:
         SPEED_RIGHT = SPEED_RIGHT - 10
         SPEED_LEFT = SPEED_LEFT - 10
@@ -65,13 +65,14 @@ def back(event):
             GPIO.output(DIG2, GPIO.HIGH)
         else:
             GPIO.output(DIG2, GPIO.LOW)
+        right_wheel.start(abs(SPEED_RIGHT))
+        left_wheel.start(abs(SPEED_LEFT))
         label1.config(text="左: {0}  右: {1}".format(SPEED_LEFT, SPEED_RIGHT))
 
 def left(event):
     global SPEED_RIGHT, SPEED_LEFT
-    print(SPEED_RIGHT, SPEED_LEFT)
     if (SPEED_RIGHT + 5 > 50) or (SPEED_LEFT - 5 < -50) :
-        label1.config(text="左: {0}  右: {1}    操作できません".format(SPEED_LEFT, SPEED_RIGHT))
+        label1.config(text="左: {0}  右: {1}  操作不可".format(SPEED_LEFT, SPEED_RIGHT))
     else:
         SPEED_RIGHT = SPEED_RIGHT + 5
         SPEED_LEFT = SPEED_LEFT - 5
@@ -83,13 +84,14 @@ def left(event):
             GPIO.output(DIG2, GPIO.HIGH)
         else:
             GPIO.output(DIG2, GPIO.LOW)
+        right_wheel.start(abs(SPEED_RIGHT))
+        left_wheel.start(abs(SPEED_LEFT))
         label1.config(text="左: {0}  右: {1}".format(SPEED_LEFT, SPEED_RIGHT))
 
 def right(event):
     global SPEED_RIGHT, SPEED_LEFT
-    print(SPEED_RIGHT, SPEED_LEFT)
     if (SPEED_RIGHT - 5 < -50) or (SPEED_LEFT + 5 > 50) :
-        label1.config(text="左: {0}  右: {1}    操作できません".format(SPEED_LEFT, SPEED_RIGHT))
+        label1.config(text="左: {0}  右: {1}  操作不可".format(SPEED_LEFT, SPEED_RIGHT))
     else:
         SPEED_RIGHT = SPEED_RIGHT - 5
         SPEED_LEFT = SPEED_LEFT + 5
@@ -101,6 +103,8 @@ def right(event):
             GPIO.output(DIG2, GPIO.HIGH)
         else:
             GPIO.output(DIG2, GPIO.LOW)
+        right_wheel.start(abs(SPEED_RIGHT))
+        left_wheel.start(abs(SPEED_LEFT))
         label1.config(text="左: {0}  右: {1}".format(SPEED_LEFT, SPEED_RIGHT))
 
 
@@ -108,14 +112,16 @@ def stop(event):
     global SPEED_RIGHT, SPEED_LEFT
     SPEED_RIGHT = 0
     SPEED_LEFT = 0
+    right_wheel.start(SPEED_RIGHT)
+    left_wheel.start(SPEED_LEFT)
     label1.config(text="左: {0}  右: {1}".format(SPEED_LEFT, SPEED_RIGHT))
 
 
 
 
 #----------------------------------------------
-STOP_BUTTON_X=1000
-STOP_BUTTON_Y=400
+STOP_BUTTON_X=1300
+STOP_BUTTON_Y=350
 
 BUTTON_HEIGTH = 15
 BUTTON_WIDTH = 30
@@ -147,7 +153,7 @@ Button_Stop.place(x=STOP_BUTTON_X, y=STOP_BUTTON_Y)
 #value.place(x=175, y=300)
 
 label1= tk.Label(root)
-label1.config(text="停止")
-label1.place(x=350, y=400)
+label1.config(text="停止", font=("", 40))
+label1.place(x=1250, y=900)
 
 root.mainloop()
