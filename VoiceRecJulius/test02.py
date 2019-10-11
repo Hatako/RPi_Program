@@ -19,7 +19,7 @@ import socket
 import xml.etree.ElementTree as ET
 import subprocess
 from datetime import datetime
-import commands
+#import commands
 import time
 import os
 
@@ -96,7 +96,6 @@ try:
 			data = data + client.recv(1024)
 except KeyboardInterrupt:
 	client.close()
-
 
 
 

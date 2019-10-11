@@ -25,7 +25,7 @@ while True:
 			message = client_socket.recv(bufsize)
 			print( message)
 			if message == "":
-				print 'クライアントの実行を停止します'
+				print('クライアントの実行を停止します')
 				flag = False
 				break
 #			else:
@@ -35,4 +35,3 @@ while True:
 #					print "Good morning"
 
 client_socket.close()
-
