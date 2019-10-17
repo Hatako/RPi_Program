@@ -1,10 +1,7 @@
 #coding: utf-8
 
 """
-参考にしたサイト
-https://qiita.com/kkoba84/items/b828229c374a249965a9
-openJtalkをpythonで喋らせる
-
+「openJtalkをpythonで喋らせる」https://qiita.com/kkoba84/items/b828229c374a249965a9
 """
 
 

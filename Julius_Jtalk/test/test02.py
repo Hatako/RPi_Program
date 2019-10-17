@@ -93,10 +93,10 @@ try:
 					send_command('RESUME')
 			data = ''
 		else:
+            print("data")
 			data = data + client.recv(1024)
 except KeyboardInterrupt:
 	client.close()
-
 
 
 
