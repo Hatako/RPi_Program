@@ -1,9 +1,11 @@
 #coding: utf-8
 import subprocess
 from datetime import datetime
-
+# sudo open_jtalk -x /var/lib/mecab/dic/open-jtalk/naist-jdic -m /usr/share/hts-voice/mei/mei_normal.htsvoice -r 1.0 -ow open_jtalk.wav
+# sudo aplay -q open_jtalk.wav
+# aplay -D plughw:1,0 test.wav
 def jtalk(t):
-    open_jtalk=['open_jtalk']
+    open_jtalk=['sudo', 'open_jtalk']
     mech=['-x','/var/lib/mecab/dic/open-jtalk/naist-jdic']
     htsvoice=['-m','/usr/share/hts-voice/mei/mei_normal.htsvoice']
     speed=['-r','1.0']
@@ -13,7 +15,7 @@ def jtalk(t):
     c.stdin.write(t.encode())
     c.stdin.close()
     c.wait()
-    aplay = ['aplay','-q','open_jtalk.wav']
+    aplay = ['aplay', '-D', 'plughw:1,0', 'open_jtalk.wav']
     wr = subprocess.Popen(aplay)
 
 def say_datetime():
